@@ -1,16 +1,16 @@
 // TICK 1. write an event listener on the basic-calc button
 // TICK 2. inside the function on that event listener collect the values from the user and store them in variables
 // TICK 3. do the relevant calculations on those variables
-// 4. show the answer div
-// 5. update the text of the answer div accordingly
+// TICK 4. show the answer div
+// TICK 5. update the text of the answer div accordingly
 
 var basicButton = document.getElementById('basic-calc');
-var basicNum1;
-var basicNum2;
-var basicOp;
-var basicAns;
-var basicAnsBox = document.getElementById("basic-answer");
-var basicAnsDisplay = 
+var basicNum1; // input numbers
+var basicNum2; 
+var basicOp; // operator selected by user
+var basicAns; // This is what is returned by the switch, below are display elements. 
+var basicAnsBox = document.getElementById('basic-answer');
+var basicAnsDisplay = document.getElementById('basic-answer-alert'); 
 
 basicButton.addEventListener('click', basicGet);
 
@@ -29,21 +29,25 @@ function basicGet() {
         basicAns = (basicNum1 + basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
         basicAnsBox.className = "show";
+        basicAnsDisplay.innerHTML = basicAns;
         break;
       case"-":
         basicAns = (basicNum1 - basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
         basicAnsBox.className = "show";
+        basicAnsDisplay.innerHTML = basicAns;
         break;
       case"/":
         basicAns = (basicNum1 / basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
         basicAnsBox.className = "show";
+        basicAnsDisplay.innerHTML = basicAns;
         break;
       case"*":
         basicAns = (basicNum1 * basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
         basicAnsBox.className = "show";
+        basicAnsDisplay.innerHTML = basicAns;
         break;      
       default:
         alert("How on earth did you manage that from a Dropdown?!"); // Developer humour is coming along better than the coding!
