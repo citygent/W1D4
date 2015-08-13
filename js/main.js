@@ -62,13 +62,15 @@ var bmiHeightDisplay = document.getElementById('bmi-height-unit'); // what unit 
 var bmiMass = parseFloat(document.getElementById('bmi-mass').value);  // Sets bmiMass var to user input.
 var bmiHeight = parseFloat(document.getElementById('bmi-height').value); // Sets bmiHeight var to user input.
 var bmiAns;
+var bmiAnsBox = document.getElementById('bmi-answer');
+var bmiAnsDisplay = document.getElementById('bmi-answer-alert');
 
 bmiSelector.addEventListener('change', bmiChange); // when selector changed, run bmiChange.
 bmiButton.addEventListener('click', bmiSum);  // when button is clicked do a thing.
 
 function bmiChange() {
   bmiUnit = document.getElementById('bmi-units').value; // changes the value the selector is on
-    if (bmiUnit === 'imperial') {                           // IF TIME: Change values user imputs when selector is changed.
+    if (bmiUnit === 'imperial') {      
       bmiMassDisplay.innerHTML = "lb";
       bmiHeightDisplay.innerHTML = "in";
       return bmiUnit;
@@ -84,11 +86,13 @@ function bmiSum(bmiMass, bmiHeight) {
   bmiHeight = parseFloat(document.getElementById('bmi-height').value);
   bmiUnit = document.getElementById('bmi-units').value;
   if (bmiUnit === 'imperial') {
-    bmiAns = (bmiMass/(bmiHeight * bmiHeight)) * 703;
-    console.log(bmiAns);
+    bmiAns = ((bmiMass/(bmiHeight * bmiHeight)) * 703).toFixed(2);
+    bmiAnsBox.className = "show";
+    bmiAnsDisplay.innerHTML = bmiAns;
   }
   else if (bmiUnit === 'metric') {
-    bmiAns = (bmiMass / Math.pow(bmiHeight, 2));
-    console.log(bmiAns);
+    bmiAns = (bmiMass / Math.pow(bmiHeight, 2)).toFixed(2);
+    bmiAnsBox.className = "show";
+    bmiAnsDisplay.innerHTML = bmiAns;
   }
 }
