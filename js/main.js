@@ -82,7 +82,7 @@ function bmiChange() {
 function bmiSum(bmiMass, bmiHeight) {
   bmiMass = parseFloat(document.getElementById('bmi-mass').value);
   bmiHeight = parseFloat(document.getElementById('bmi-height').value);
-  
+  bmiUnit = document.getElementById('bmi-units').value;
   if (bmiUnit === 'imperial') {
     bmiAns = (bmiMass/(bmiHeight * bmiHeight)) * 703;
     console.log(bmiAns);
