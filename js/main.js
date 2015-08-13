@@ -1,5 +1,3 @@
-console.log("lo Tosh got a Toshiba?");
-
 // TICK 1. write an event listener on the basic-calc button
 // TICK 2. inside the function on that event listener collect the values from the user and store them in variables
 // TICK 3. do the relevant calculations on those variables
@@ -11,6 +9,8 @@ var basicNum1;
 var basicNum2;
 var basicOp;
 var basicAns;
+var basicAnsBox = document.getElementById("basic-answer");
+var basicAnsDisplay = 
 
 basicButton.addEventListener('click', basicGet);
 
@@ -26,22 +26,26 @@ function basicGet() {
   console.log('clicked!'); // REMOVE WHEN DONE
     switch(basicOp) {
       case"+":
-        basicAns = (basicNum1 + basicNum2) / 100; // /100 rounds to 2 decimal places. 
+        basicAns = (basicNum1 + basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
+        basicAnsBox.className = "show";
         break;
       case"-":
-        basicAns = (basicNum1 - basicNum2) / 100; // /100 rounds to 2 decimal places. 
+        basicAns = (basicNum1 - basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
+        basicAnsBox.className = "show";
         break;
       case"/":
-        basicAns = (basicNum1 / basicNum2) / 100; // /100 rounds to 2 decimal places. 
+        basicAns = (basicNum1 / basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
+        basicAnsBox.className = "show";
         break;
       case"*":
-        basicAns = (basicNum1 * basicNum2) / 100; // /100 rounds to 2 decimal places. 
+        basicAns = (basicNum1 * basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
         console.log(basicAns);
+        basicAnsBox.className = "show";
         break;      
       default:
-        alert("How on earth did you manage that from a Dropdown?!"); // Developer humour is coming on better than the coding. 
+        alert("How on earth did you manage that from a Dropdown?!"); // Developer humour is coming along better than the coding!
     }
 }
