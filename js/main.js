@@ -10,9 +10,9 @@ var basicButton = document.getElementById('basic-calc');
 var basicNum1;
 var basicNum2;
 
-basicButton.addEventListener('click', clicked);
+basicButton.addEventListener('click', basicGet);
 
-function clicked() {
+function basicGet() {
   // debugger;
   // event.preventDefault();
   basicNum1 = document.getElementById('basic-num-1').value; // sets basicNum vars to value of user inputs on 
