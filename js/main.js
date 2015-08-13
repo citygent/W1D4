@@ -5,3 +5,11 @@ console.log("lo Tosh got a Toshiba?");
 // 3. do the relevant calculations on those variables
 // 4. show the answer div
 // 5. update the text of the answer div accordingly
+
+var basicButton = document.getElementById('basic-calc');
+
+basicButton.addEventListener('click', clicked);
+
+function clicked() {
+  console.log('clicked!');
+}
