@@ -66,33 +66,31 @@ var bmiAnsBox = document.getElementById('bmi-answer');
 var bmiAnsDisplay = document.getElementById('bmi-answer-alert');
 
 bmiSelector.addEventListener('change', bmiChange); // when selector changed, run bmiChange.
-bmiButton.addEventListener('click', bmiSum);  // when button is clicked do a thing.
+bmiButton.addEventListener('click', bmiSum);  // when button is clicked run bmiSum.
 
-function bmiChange() {
-  bmiUnit = document.getElementById('bmi-units').value; // changes the value the selector is on
+function bmiChange() { // When selector is changed, make display changes on page...
+  bmiUnit = document.getElementById('bmi-units').value; 
     if (bmiUnit === 'imperial') {      
       bmiMassDisplay.innerHTML = "lb";
       bmiHeightDisplay.innerHTML = "in";
-      return bmiUnit;
     }
     else if (bmiUnit === 'metric') {
       bmiMassDisplay.innerHTML = "kg";
       bmiHeightDisplay.innerHTML = "m";
-      return bmiUnit;
     }
 }
-function bmiSum(bmiMass, bmiHeight) {
-  bmiMass = parseFloat(document.getElementById('bmi-mass').value);
-  bmiHeight = parseFloat(document.getElementById('bmi-height').value);
-  bmiUnit = document.getElementById('bmi-units').value;
-  if (bmiUnit === 'imperial') {
-    bmiAns = ((bmiMass/(bmiHeight * bmiHeight)) * 703).toFixed(2);
-    bmiAnsBox.className = "show";
-    bmiAnsDisplay.innerHTML = bmiAns;
+function bmiSum(bmiMass, bmiHeight) { // If there's time split this into bmiSum and bmiGet like with basic.
+  bmiMass = parseFloat(document.getElementById('bmi-mass').value); // Get values from user input boxes and 
+  bmiHeight = parseFloat(document.getElementById('bmi-height').value); // parses them.
+  bmiUnit = document.getElementById('bmi-units').value; // What unit user selected by the dropdown.
+  if (bmiUnit === 'imperial') {       // IMPERIAL MATHS
+    bmiAns = ((bmiMass/(bmiHeight * bmiHeight)) * 703).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
+    bmiAnsBox.className = "show";   // display green box on answer generation
+    bmiAnsDisplay.innerHTML = bmiAns; // displays answer to page.
   }
-  else if (bmiUnit === 'metric') {
-    bmiAns = (bmiMass / Math.pow(bmiHeight, 2)).toFixed(2);
-    bmiAnsBox.className = "show";
-    bmiAnsDisplay.innerHTML = bmiAns;
+  else if (bmiUnit === 'metric') { // METRIC MATHS
+    bmiAns = (bmiMass / Math.pow(bmiHeight, 2)).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
+    bmiAnsBox.className = "show";  // display green box on answer generation
+    bmiAnsDisplay.innerHTML = bmiAns; // displays answer to page.
   }
 }
