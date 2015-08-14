@@ -112,7 +112,7 @@ function tripSum(distance, mpg, cpg, speed) {
   mpg = parseFloat(document.getElementById('trip-mpg').value);
   cpg = parseFloat(document.getElementById('trip-cost').value);
   speed = parseFloat(document.getElementById('trip-speed').value);
-  tripAns = ("Your trip will take "+ (distance/speed).toFixed(2) +" hours and cost &#163;"+((distance/mpg)*cpg).toFixed(2));
+  tripAns = ("Your trip will take "+ (distance/speed).toFixed(1) +" hours and cost &#163;"+((distance/mpg)*cpg).toFixed(2));
   tripBox.className = "show";
   tripDisplay.innerHTML = tripAns;
 }
