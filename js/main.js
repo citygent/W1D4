@@ -94,3 +94,29 @@ function bmiSum(bmiMass, bmiHeight) { // If there's time split this into bmiSum 
     bmiAnsDisplay.innerHTML = bmiAns; // displays answer to page.
   }
 }
+
+// The output is a string: “Your trip will take 3.5 hours and cost $255.33.”
+// time = distance/ speed. // cost = (distance/mpg) * $pg
+var distance;
+var mpg;
+var cpg;
+var speed;
+var tripBox = document.getElementById('trip-answer');
+var tripDisplay = document.getElementById('trip-answer-alert');
+var tripButton = document.getElementById('trip-calc');
+
+tripButton.addEventListener('click', tripSum);
+
+function tripSum(distance, mpg, cpg, speed) {
+  distance = parseFloat(document.getElementById('trip-distance').value);
+  mpg = parseFloat(document.getElementById('trip-mpg').value);
+  cpg = parseFloat(document.getElementById('trip-cost').value);
+  speed = parseFloat(document.getElementById('trip-speed').value);
+  tripAns = ("Your trip will take "+ (distance/speed).toFixed(2) +" hours and cost &#163;"+((distance/mpg)*cpg).toFixed(2));
+  tripBox.className = "show";
+  tripDisplay.innerHTML = tripAns;
+}
+  
+
+// For every 1 MPH over 60 MPH, reduce the the MPG by 2 MPG (i.e. a car that normally gets 30 mpg would only get 28 mpg if its speed were 61 mph. Yes this gets silly at high speed where mpg goes to zero or gets negative.)
+
