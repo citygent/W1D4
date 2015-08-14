@@ -1,57 +1,40 @@
-// TICK 1. write an event listener on the basic-calc button
-// TICK 2. inside the function on that event listener collect the values from the user and store them in variables
-// TICK 3. do the relevant calculations on those variables
-// TICK 4. show the answer div
-// TICK 5. update the text of the answer div accordingly
   // debugger;
-  // event.preventDefault();
+  // event.preventDefault(); - For form events, no form events in this exercise.
 
 var basicButton = document.getElementById('basic-calc');
-var basicNum1; // input numbers
-var basicNum2; 
-var basicOp; // operator selected by user
-var basicAns; // This is what is returned by the switch, below are display elements. 
-var basicAnsBox = document.getElementById('basic-answer');
-var basicAnsDisplay = document.getElementById('basic-answer-alert'); 
-
 basicButton.addEventListener('click', basicGet);
 
 function basicGet() {
-  basicOp = document.getElementById('basic-operation').value; // Gets value from dropdown, can return: +-*/
-  basicNum1 = parseFloat(document.getElementById('basic-num-1').value); // Set basicNum vars to ParseFloated value of user inputs on 
-  basicNum2 = parseFloat(document.getElementById('basic-num-2').value); // input boxes with IDs basic-num-1/2. 
-  basicSum(basicNum1, basicNum2); // Calls the function that does the maths. 
+  var basicOp = document.getElementById('basic-operation').value; // Gets value from dropdown, can return: +-*/
+  var basicNum1 = parseFloat(document.getElementById('basic-num-1').value); // Set basicNum vars to ParseFloated value of user inputs on 
+  var basicNum2 = parseFloat(document.getElementById('basic-num-2').value); // input boxes with IDs basic-num-1/2. 
+  if (!isNaN(basicNum1)) { // checks if user has input numbers. 
+    basicSum(basicNum1, basicNum2, basicOp); // Calls the function that does the maths, passes the above vars. 
+  }
 }
-
-function basicSum(basicNum1, basicNum2) {
+function basicSum(basicNum1, basicNum2, basicOp) {
+  var basicAns;
   switch(basicOp) {
     case"+":
       basicAns = (basicNum1 + basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
-      console.log(basicAns);
-      basicAnsBox.className = "show";
-      basicAnsDisplay.innerHTML = basicAns;
       break;
     case"-":
       basicAns = (basicNum1 - basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
-      console.log(basicAns);
-      basicAnsBox.className = "show";
-      basicAnsDisplay.innerHTML = basicAns;
       break;
     case"/":
       basicAns = (basicNum1 / basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
-      console.log(basicAns);
-      basicAnsBox.className = "show";
-      basicAnsDisplay.innerHTML = basicAns;
       break;
     case"*":
       basicAns = (basicNum1 * basicNum2).toFixed(2); //.toFixed(2) rounds float answers to 2 decimal places.
-      console.log(basicAns);
-      basicAnsBox.className = "show";
-      basicAnsDisplay.innerHTML = basicAns;
       break;      
     default:
-      alert("How on earth did you manage that from a Dropdown?!"); // Developer humour is coming along better than the coding!
+      alert("How on earth did you manage that from a Dropdown?!"); // Developer humour is coming along!
   }
+  // function to call show answer instead of below?
+  var basicAnsBox = document.getElementById('basic-answer');
+  var basicAnsDisplay = document.getElementById('basic-answer-alert'); 
+  basicAnsBox.className = "show"; // displays Green Box for answer. 
+  basicAnsDisplay.innerHTML = basicAns; // displays answer in Green Box
 }
 
 var bmiButton = document.getElementById('bmi-calc'); // the button
@@ -116,7 +99,5 @@ function tripSum(distance, mpg, cpg, speed) {
   tripBox.className = "show";
   tripDisplay.innerHTML = tripAns;
 }
-  
-
-// For every 1 MPH over 60 MPH, reduce the the MPG by 2 MPG (i.e. a car that normally gets 30 mpg would only get 28 mpg if its speed were 61 mph. Yes this gets silly at high speed where mpg goes to zero or gets negative.)
+  // For every 1 MPH over 60 MPH, reduce the the MPG by 2 MPG (i.e. a car that normally gets 30 mpg would only get 28 mpg if its speed were 61 mph. Yes this gets silly at high speed where mpg goes to zero or gets negative.)
 
